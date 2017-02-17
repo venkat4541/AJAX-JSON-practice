@@ -1,0 +1,35 @@
+<body>
+  <div id="output1">
+
+  </div>
+  <div id="output2">
+
+  </div>
+
+  <script>
+    var output1 = document.getElementById('output1');
+    var output2 = document.getElementById('output2');
+
+    var myObj = {
+      "people": [
+        {"firstName": "Mike", "lastName": "Smith", "age": 30},
+        {"firstName": "John", "lastName": "Jones", "age": 40}
+      ],
+      "places": [
+        {"location": "USA", "latitude": "40N20S"},
+        {"location": "Canada", "latitude": "60W10E"}
+      ]
+    };
+
+    // console.log(myObj);
+
+    for (var i = 0; i < myObj.people.length; i++) {
+      output1.innerHTML += myObj.people[i].firstName+" "+myObj.people[i].lastName+"<br>";
+    }
+
+    for (var i = 0; i < myObj.places.length; i++) {
+      output2.innerHTML += myObj.places[i].location+" "+myObj.places[i].latitude+"<br>";
+    }
+    
+  </script>
+</body>
