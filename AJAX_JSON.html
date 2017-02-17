@@ -1,0 +1,23 @@
+<body>
+  <div id="output1">
+
+  </div>
+  <script>
+    var output1 = document.getElementById('output1');
+
+    var hr = new XMLHttpRequest();
+    var url = "https://api.myjson.com/bins/17sdph";
+
+    hr.onreadystatechange = function() {
+      if(this.readyState == 4 && this.status == 200) {
+        var myObj = JSON.parse(hr.responseText);
+        output1.innerHTML = myObj.people[1].firstName;
+      }
+    };
+
+    hr.open("GET", url, true);
+    hr.send();
+
+    console.log(hr);
+  </script>
+</body>
