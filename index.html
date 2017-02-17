@@ -1,59 +1,23 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="A webpage created based on a AI wireframe">
-    <meta name="Venkat Polumahanti" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colorful Webpage</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <div class="logo">
-          <img src="http://lorempixel.com/150/150" alt="">
-        </div>
-        <div class="nav">
-          <a href="#" class="nav-btn">Lorem Ipsum</a>
-          <a href="#" class="nav-btn">Lorem Ipsum</a>
-          <a href="#" class="nav-btn">Lorem Ipsum</a>
-          <form>
-            <input onblur="check()" type="text" id="inp">
-          </form>
-        </div>
-      </header>
-      <div class="bg-img">
-        <span>Lorem ipsum dolor sit amet.</span>
-      </div>
-      <div class="thumbnails">
-        <div class="tmb">
-          <div class="tmb-img">
-            <span>Lorem ipsum dolor sit amet.</span>
-          </div>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, </p>
-        </div>
-        <div class="tmb">
-          <div class="tmb-img">
-            <span>Lorem ipsum dolor sit amet.</span>
-          </div>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, </p>
-        </div>
-        <div class="tmb">
-          <div class="tmb-img">
-            <span>Lorem ipsum dolor sit amet.</span>
-          </div>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, </p>
-        </div>
-      </div>
-    </div>
-    <script>
-      function check(){
-        val = document.getElementById('inp').value;
-        if (val < 11 && val!=='') {
-          alert('hello');
-        }
+<body>
+  <div id="output1">
+
+  </div>
+  <script>
+    var output1 = document.getElementById('output1');
+
+    var hr = new XMLHttpRequest();
+    var url = "https://api.myjson.com/bins/17sdph";
+
+    hr.onreadystatechange = function() {
+      if(this.readyState == 4 && this.status == 200) {
+        var myObj = JSON.parse(hr.responseText);
+        output1.innerHTML = myObj.people[1].firstName;
       }
-    </script>
-  </body>
-</html>
+    };
+
+    hr.open("GET", url, true);
+    hr.send();
+
+    console.log(hr);
+  </script>
+</body>
