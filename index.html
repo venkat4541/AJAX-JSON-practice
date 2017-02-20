@@ -26,11 +26,13 @@
         var hr = new XMLHttpRequest();
         var url = "temp.php";
 
-          hr.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                astatus.innerHTML = hr.responseText;
-                console.log(hr.responseText);
-            }
+        hr.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+              var myObj = JSON.parse(hr.responseText);
+              astatus.innerHTML = "Status: "+myObj.xstatus+"<br>ID: "+myObj.id;
+          } else {
+              astatus.innerHTML = "Error! Did not receive data";
+          }
         }
         hr.open("POST", url, true);
         hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
