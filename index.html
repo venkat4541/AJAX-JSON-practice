@@ -24,7 +24,11 @@
 
     <script>
       $(document).ready(function() {
-        $('#output1').load('output.html');
+        var url = "json.js";
+        $.get(url, function(data) {
+          console.log(data);
+          $('#output1').html(data);
+        });
       });
 
         // var output1 = document.getElementById('output1');
