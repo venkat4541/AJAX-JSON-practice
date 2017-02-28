@@ -15,7 +15,8 @@
         <br> Age :
         <input type="number" name="age" id="age" value="50" />
         <br>
-        <input type="button" value="SEND via AJAX" onclick="postData()">
+        <!-- <input type="button" value="SEND via AJAX" onclick="postData()"> -->
+        <input type="button" value="SEND via AJAX" >
         <input type="submit">
     </form>
 
@@ -23,11 +24,23 @@
     <div id="output1"></div>
 
     <script>
+
+      var vars = {
+        fname: $('#fname').val(),
+        lname: $('#lname').val(),
+        age: $('#age').val()
+      }
+
       $(document).ready(function() {
-        var url = "https://api.myjson.com/bins/17sdph";
-        $.get(url, function(data) {
+        var xhr = new XMLHttpRequest();
+        var url = "temp.php";
+        $.post(url, vars, function(data, status, xhr) {
           console.log(data);
-          $('#output1').html(data);
+          console.log(status);
+          console.log(xhr);
+          var dat = JSON.parse(data);
+          console.log(dat);
+          $('#output1').html(dat.first);
         });
       });
 
