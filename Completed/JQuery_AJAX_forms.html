@@ -25,30 +25,30 @@
 
     <script>
 
+      var vars = {
+        fname: $('#fname').val(),
+        lname: $('#lname').val(),
+        age: $('#age').val()
+      }
+
       $(document).ready(function() {
 
         $('#TestForm').submit(function(e) {
           e.preventDefault();
-          $('#astatus').html("processing...");
+        });
 
         var xhr = new XMLHttpRequest();
         var url = "temp.php";
-        var vars = {
-          fname: $('#fname').val(),
-          lname: $('#lname').val(),
-          age: $('#age').val()
-        }
         $.post(url, vars, function(data, status, xhr) {
           console.log(data);
           console.log(status);
           console.log(xhr);
           var dat = JSON.parse(data);
           console.log(dat);
-          $('#astatus').html(status+'!');
-          $('#output1').html('Created: '+dat.first);
-        })
-      })
-    })
+          $('#output1').html(dat.first);
+        });
+      });
+
         // var output1 = document.getElementById('output1');
         // var astatus = document.getElementById('astatus');
         //
